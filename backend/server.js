@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './src/config/db.js';
 import authRoutes from './src/routes/auth.routes.js';
+import channelRoutes from './src/routes/channel.routes.js';
+
 
 
 dotenv.config();
@@ -15,6 +17,7 @@ connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/channels', channelRoutes);
 
 
 
