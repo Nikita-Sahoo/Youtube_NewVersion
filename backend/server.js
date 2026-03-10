@@ -3,7 +3,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './src/config/db.js';
 import authRoutes from './src/routes/auth.routes.js';
+import videoRoutes from './src/routes/video.routes.js';
 import channelRoutes from './src/routes/channel.routes.js';
+import commentRoutes from './src/routes/comment.routes.js';
 
 
 
@@ -17,7 +19,9 @@ connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/videos', videoRoutes);
 app.use('/api/channels', channelRoutes);
+app.use('/api/comments', commentRoutes);
 
 
 
