@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Edit, Trash2, Plus, Video, Users, Calendar, Eye } from 'lucide-react';
 import { channelService } from '../services/channel.service';
+import { videoService } from '../services/video.service';
 import VideoCard from '../components/VideoCard';
 
 const Channel = ({ user }) => {
@@ -16,7 +17,7 @@ const Channel = ({ user }) => {
     description: '',
     channelBanner: ''
   });
-
+  
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newChannel, setNewChannel] = useState({
     channelName: '',
