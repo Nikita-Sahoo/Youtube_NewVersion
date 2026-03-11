@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FilterButtons from '../components/FilterButtons';
-
+import VideoCard from '../components/VideoCard';
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -4,9 +4,16 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
-
+import { authService } from './services/auth.service';
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const currentUser = authService.getCurrentUser();
+    setUser(currentUser);
+  }, []);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -21,8 +28,8 @@ function App() {
           <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-20'}`}>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/video/:id" element={<VideoPlayer />} />
               <Route path="/auth" element={<Auth setUser={setUser} />} />
-         
             </Routes>
           </main>
         </div>
