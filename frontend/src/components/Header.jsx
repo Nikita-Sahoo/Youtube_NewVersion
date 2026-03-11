@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, Search, User, LogOut, Video, ChevronDown } from 'lucide-react';
+import { authService } from '../services/auth.service';
 
 const Header = ({ toggleSidebar, user, setUser }) => {
   const [searchQuery, setSearchQuery] = useState('');
