@@ -2,9 +2,7 @@ import { Comment } from '../models/comment.model.js';
 import { Video } from '../models/video.model.js';
 import { User } from '../models/user.model.js';
 
-// @desc    Add a comment to a video
-// @route   POST /api/comments/video/:videoId
-// @access  Private
+// Add a comment to a video
 export const addComment = async (req, res) => {
   try {
     const { text } = req.body;
@@ -42,9 +40,7 @@ export const addComment = async (req, res) => {
   }
 };
 
-// @desc    Get all comments for a video
-// @route   GET /api/comments/video/:videoId
-// @access  Public
+// Get all comments for a video
 export const getVideoComments = async (req, res) => {
   try {
     const comments = await Comment.find({ videoId: req.params.videoId })
@@ -57,9 +53,7 @@ export const getVideoComments = async (req, res) => {
   }
 };
 
-// @desc    Update a comment
-// @route   PUT /api/comments/:id
-// @access  Private
+//  Update a comment
 export const updateComment = async (req, res) => {
   try {
     const { text } = req.body;
@@ -93,9 +87,7 @@ export const updateComment = async (req, res) => {
   }
 };
 
-// @desc    Delete a comment
-// @route   DELETE /api/comments/:id
-// @access  Private
+// Delete a comment
 export const deleteComment = async (req, res) => {
   try {
     const commentId = req.params.id;
@@ -125,9 +117,7 @@ export const deleteComment = async (req, res) => {
   }
 };
 
-// @desc    Get a single comment by ID
-// @route   GET /api/comments/:id
-// @access  Public
+// Get a single comment by ID
 export const getCommentById = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id)
@@ -144,9 +134,7 @@ export const getCommentById = async (req, res) => {
   }
 };
 
-// @desc    Get comments by user
-// @route   GET /api/comments/user/:userId
-// @access  Public
+//  Get comments by user
 export const getCommentsByUser = async (req, res) => {
   try {
     const comments = await Comment.find({ userId: req.params.userId })

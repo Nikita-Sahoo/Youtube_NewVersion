@@ -2,9 +2,7 @@ import { Channel } from '../models/channel.model.js';
 import { Video } from '../models/video.model.js';
 import { User } from '../models/user.model.js';
 
-// @desc    Create a new channel
-// @route   POST /api/channels
-// @access  Private
+// Create a new channel
 export const createChannel = async (req, res) => {
   try {
     const { channelName, description, channelBanner } = req.body;
@@ -53,9 +51,7 @@ export const createChannel = async (req, res) => {
   }
 };
 
-// @desc    Get channel by ID
-// @route   GET /api/channels/:id
-// @access  Public
+//  Get channel by ID
 export const getChannelById = async (req, res) => {
   try {
     const channel = await Channel.findById(req.params.id)
@@ -85,9 +81,7 @@ export const getChannelById = async (req, res) => {
   }
 };
 
-// @desc    Get user's channels
-// @route   GET /api/channels/user
-// @access  Private
+// Get user's channels
 export const getUserChannels = async (req, res) => {
   try {
     const channels = await Channel.find({ owner: req.user._id })
@@ -106,9 +100,7 @@ export const getUserChannels = async (req, res) => {
   }
 };
 
-// @desc    Update channel
-// @route   PUT /api/channels/:id
-// @access  Private
+//   Update channel
 export const updateChannel = async (req, res) => {
   try {
     const channel = await Channel.findById(req.params.id);
@@ -158,9 +150,7 @@ export const updateChannel = async (req, res) => {
   }
 };
 
-// @desc    Delete channel
-// @route   DELETE /api/channels/:id
-// @access  Private
+//  Delete channel
 export const deleteChannel = async (req, res) => {
   try {
     const channel = await Channel.findById(req.params.id);
@@ -204,9 +194,7 @@ export const deleteChannel = async (req, res) => {
   }
 };
 
-// @desc    Get channel videos
-// @route   GET /api/channels/:id/videos
-// @access  Public
+// Get channel videos
 export const getChannelVideos = async (req, res) => {
   try {
     const videos = await Video.find({ channelId: req.params.id })
@@ -226,9 +214,7 @@ export const getChannelVideos = async (req, res) => {
   }
 };
 
-// @desc    Subscribe to channel
-// @route   POST /api/channels/:id/subscribe
-// @access  Private
+// Subscribe to channel
 export const subscribeToChannel = async (req, res) => {
   try {
     const channel = await Channel.findById(req.params.id);
@@ -265,9 +251,7 @@ export const subscribeToChannel = async (req, res) => {
   }
 };
 
-// @desc    Unsubscribe from channel
-// @route   POST /api/channels/:id/unsubscribe
-// @access  Private
+// Unsubscribe from channel
 export const unsubscribeFromChannel = async (req, res) => {
   try {
     const channel = await Channel.findById(req.params.id);

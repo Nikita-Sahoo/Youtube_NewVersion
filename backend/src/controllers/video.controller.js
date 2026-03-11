@@ -2,9 +2,7 @@ import { Video } from '../models/video.model.js';
 import { Channel } from '../models/channel.model.js';
 import { Comment } from '../models/comment.model.js';
 
-// @desc    Get all videos with filters
-// @route   GET /api/videos
-// @access  Public
+//Get all videos with filters
 export const getAllVideos = async (req, res) => {
   try {
     const { category, search } = req.query;
@@ -31,9 +29,7 @@ export const getAllVideos = async (req, res) => {
   }
 };
 
-// @desc    Get single video by ID
-// @route   GET /api/videos/:id
-// @access  Public
+//  Get single video by ID
 export const getVideoById = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id)
@@ -61,9 +57,7 @@ export const getVideoById = async (req, res) => {
   }
 };
 
-// @desc    Create a new video
-// @route   POST /api/videos/:channelId
-// @access  Private
+// Create a new video
 export const createVideo = async (req, res) => {
   try {
     const { title, description, videoUrl, thumbnailUrl, category } = req.body;
@@ -110,9 +104,7 @@ export const createVideo = async (req, res) => {
   }
 };
 
-// @desc    Update video
-// @route   PUT /api/videos/:id
-// @access  Private
+//Update video
 export const updateVideo = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
@@ -148,9 +140,7 @@ export const updateVideo = async (req, res) => {
   }
 };
 
-// @desc    Delete video
-// @route   DELETE /api/videos/:id
-// @access  Private
+// Delete video
 export const deleteVideo = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
@@ -181,9 +171,7 @@ export const deleteVideo = async (req, res) => {
   }
 };
 
-// @desc    Like a video
-// @route   POST /api/videos/:id/like
-// @access  Private
+//  Like a video
 export const likeVideo = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
@@ -201,9 +189,7 @@ export const likeVideo = async (req, res) => {
   }
 };
 
-// @desc    Dislike a video
-// @route   POST /api/videos/:id/dislike
-// @access  Private
+// Dislike a video
 export const dislikeVideo = async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
@@ -221,9 +207,7 @@ export const dislikeVideo = async (req, res) => {
   }
 };
 
-// @desc    Get videos by channel
-// @route   GET /api/videos/channel/:channelId
-// @access  Public
+// Get videos by channel
 export const getVideosByChannel = async (req, res) => {
   try {
     const videos = await Video.find({ channelId: req.params.channelId })
