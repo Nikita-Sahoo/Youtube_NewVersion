@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import VideoPlayer from './pages/VideoPlayer';
 import Auth from './pages/Auth';
+import Channel from './pages/Channel';
 import { authService } from './services/auth.service';
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/video/:id" element={<VideoPlayer />} />
               <Route path="/auth" element={<Auth setUser={setUser} />} />
+              <Route path="/channel" element={<Channel user={user} />} />
+              <Route path="/channel/:id" element={<Channel user={user} />} />
             </Routes>
           </main>
         </div>
