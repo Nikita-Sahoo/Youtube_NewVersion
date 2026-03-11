@@ -3,6 +3,7 @@ import { ThumbsUp, ThumbsDown, MoreVertical, Edit, Trash2, Reply } from 'lucide-
 import { authService } from '../../services/auth.service';
 
 const Comment = ({ comment, onEdit, onDelete, onReply }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(comment.text);
   const [showMenu, setShowMenu] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
@@ -36,6 +37,21 @@ const Comment = ({ comment, onEdit, onDelete, onReply }) => {
     }
   };
 
+  const handleEdit = () => {
+    if (editText.trim() && editText !== comment.text) {
+      onEdit(comment._id, editText);
+    }
+    setIsEditing(false);
+    setShowMenu(false);
+  };
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this comment?')) {
+      onDelete(comment._id);
+    }
+    setShowMenu(false);
+  };
+
   const isOwner = user && user.id === comment.userId?._id;
 
   return (
@@ -63,6 +79,10 @@ const Comment = ({ comment, onEdit, onDelete, onReply }) => {
                 Save
               </button>
               <button
+                onClick={() => {
+                  setIsEditing(false);
+                  setEditText(comment.text);
+                }}
                 className="px-3 py-1 bg-gray-200 text-sm rounded-full hover:bg-gray-300"
               >
                 Cancel
@@ -91,7 +111,10 @@ const Comment = ({ comment, onEdit, onDelete, onReply }) => {
                   {showMenu && (
                     <div className="absolute left-0 mt-1 w-32 bg-white rounded-lg shadow-lg border py-1 z-10">
                       <button
-                       
+                        onClick={() => {
+                          setIsEditing(true);
+                          setShowMenu(false);
+                        }}
                         className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 w-full text-sm"
                       >
                         <Edit size={14} />

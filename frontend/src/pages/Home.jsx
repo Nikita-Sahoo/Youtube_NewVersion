@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import FilterButtons from '../components/FilterButtons';
 
 
 const Home = () => {
