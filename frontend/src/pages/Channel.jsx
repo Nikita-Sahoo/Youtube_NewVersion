@@ -17,7 +17,6 @@ const Channel = ({ user }) => {
     description: '',
     channelBanner: ''
   });
-  
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newChannel, setNewChannel] = useState({
     channelName: '',

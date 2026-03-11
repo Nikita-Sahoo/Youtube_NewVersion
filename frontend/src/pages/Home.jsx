@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FilterButtons from '../components/FilterButtons';
 import VideoCard from '../components/VideoCard';
+import { videoService } from '../services/video.service';
 
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();

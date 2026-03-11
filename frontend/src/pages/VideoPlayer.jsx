@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThumbsUp, ThumbsDown, Share, Save } from 'lucide-react';
+import { videoService } from '../services/video.service';
 import { commentService } from '../services/comment.service';
 import { authService } from '../services/auth.service';
 
