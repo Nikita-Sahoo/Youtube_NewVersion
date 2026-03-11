@@ -1,8 +1,10 @@
 import { Comment } from '../models/comment.model.js';
 import { Video } from '../models/video.model.js';
-// import { User } from '../models/user.model.js';
+import { User } from '../models/user.model.js';
 
-// Add a comment to a video
+// @desc    Add a comment to a video
+// @route   POST /api/comments/video/:videoId
+// @access  Private
 export const addComment = async (req, res) => {
   try {
     const { text } = req.body;
@@ -40,7 +42,9 @@ export const addComment = async (req, res) => {
   }
 };
 
-//  Get all comments for a video
+// @desc    Get all comments for a video
+// @route   GET /api/comments/video/:videoId
+// @access  Public
 export const getVideoComments = async (req, res) => {
   try {
     const comments = await Comment.find({ videoId: req.params.videoId })
@@ -53,7 +57,9 @@ export const getVideoComments = async (req, res) => {
   }
 };
 
-// Update a comment
+// @desc    Update a comment
+// @route   PUT /api/comments/:id
+// @access  Private
 export const updateComment = async (req, res) => {
   try {
     const { text } = req.body;
@@ -87,7 +93,9 @@ export const updateComment = async (req, res) => {
   }
 };
 
-// Delete a comment
+// @desc    Delete a comment
+// @route   DELETE /api/comments/:id
+// @access  Private
 export const deleteComment = async (req, res) => {
   try {
     const commentId = req.params.id;
@@ -117,7 +125,9 @@ export const deleteComment = async (req, res) => {
   }
 };
 
-//  Get a single comment by ID
+// @desc    Get a single comment by ID
+// @route   GET /api/comments/:id
+// @access  Public
 export const getCommentById = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.id)
@@ -134,7 +144,9 @@ export const getCommentById = async (req, res) => {
   }
 };
 
-// Get comments by user
+// @desc    Get comments by user
+// @route   GET /api/comments/user/:userId
+// @access  Public
 export const getCommentsByUser = async (req, res) => {
   try {
     const comments = await Comment.find({ userId: req.params.userId })
